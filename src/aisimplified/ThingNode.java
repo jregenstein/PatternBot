@@ -17,7 +17,10 @@ import java.util.Set;
  * @author jacobregenstein
  */
 public class ThingNode {
+    //a map of symbols, so a symbol is only created once for each character that
+    //is used
     private static HashMap<Character,Symbol> symbols = new HashMap<>();//stores all the symbols so we don't have duplicates
+    //the root node, which the tree grows from
     public static ThingNode root = new ThingNode(null);
     private Thing pattern;//should only have a value if isPattern==true, contains the values of all the parents
     private Thing value;
@@ -35,7 +38,8 @@ public class ThingNode {
         }
     }
     
-    //really only makes symbols, but named the same so makeThing can take chars or strings
+    //really only makes symbols, but I wanted the method to be flexible in its
+    //input type
     public static Thing makeThing(char c){
         if(symbols.containsKey(c)){
             return symbols.get(c);
@@ -47,6 +51,8 @@ public class ThingNode {
         }
     }
     
+    //this is used primarily for debugging, used to check if a pattern is holding
+    //the stuff we want it to
     public String toString(){
         String s = "";
         if(value!=null) s += value.toString();
@@ -64,6 +70,7 @@ public class ThingNode {
         root.addPattern(p, p.getPattern());
     }
     
+    //does the actual work of adding the pattern
     private void addPattern(Pattern p, List<Thing> things){
         if(things.isEmpty()){
             this.pattern = p;
@@ -92,7 +99,6 @@ public class ThingNode {
         return pattern;
     }
     
-    //constructs a thingnode given a thing and a boolean that tells you if the path to the node represents a pattern
     public ThingNode(Thing t){
         value = t;
     }
@@ -118,6 +124,7 @@ public class ThingNode {
         return children.keySet();
     }
     
+    //This method is the reason 
     public boolean hasChild(Thing t){
         return children.containsKey(t);
     }
