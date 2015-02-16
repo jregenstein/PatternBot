@@ -23,7 +23,9 @@ import java.util.Scanner;
  * exists.
  * 
  * 
- * consider going back to the original plan of replacing things with numbers
+ * next up, find a way for sibling nodes to both link to the same child (and figure
+ * how to deal with this in the parent field). Possibly go back to the idea of replacing
+ * pattern elements with numbers
  * 
  * @author jacobregenstein
  */
