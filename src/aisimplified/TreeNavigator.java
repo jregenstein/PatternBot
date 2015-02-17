@@ -13,12 +13,13 @@ import java.util.LinkedList;
  * @author jacobregenstein
  */
 public class TreeNavigator {
+    //the node the navigator is currently looking at
     ThingNode currentNode;
     LinkedList<Thing> currentpattern = new LinkedList<>();//a list containing that pattern that is currently being looked at
     private boolean explicit = false;//just for debugging purposes, turns on print statements
     
     public TreeNavigator(){
-        currentNode = ThingNode.root;
+        currentNode = ThingNode.root;//we always want to start on the root node
     }
     
     public void goToChild(Thing t){
