@@ -124,7 +124,12 @@ public class ThingNode {
         return children.keySet();
     }
     
-    //This method is the reason 
+    //This method is the reason only the makeThing method should be used, if it
+    //is given an object that is identical to one of it's children but not actually
+    //the same object it won't return true. I could have it individually look through
+    //each object and use the .equals() method but that would be much less efficient,
+    //and if the program gets complex enough to need that effiency I don't want to
+    //worry about restructuring it then.
     public boolean hasChild(Thing t){
         return children.containsKey(t);
     }
